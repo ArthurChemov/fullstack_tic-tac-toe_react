@@ -1,13 +1,4 @@
-import {
-    OnConnect,
-    SocketController,
-    ConnectedSocket,
-    OnDisconnect,
-    MessageBody,
-    OnMessage,
-    SocketIO
-} from 'socket-controllers';
-
+import { SocketController, ConnectedSocket, MessageBody, OnMessage, SocketIO } from 'socket-controllers';
 import { Socket, Server } from "socket.io"
 
 
@@ -19,19 +10,12 @@ export class RoomController {
 
         // get the room
         const room = io.sockets.adapter.rooms.get(data.room);
-        console.log("🚀 ~ file: room.ts:23 ~ RoomController ~ joinRoom ~ room", room)
-        const socketRooms = Array.from(socket.rooms.values())
-        console.log("🚀 ~ file: room.ts:24 ~ RoomController ~ joinRoom ~ socketRooms", socketRooms)
         const socketRoomsFilter = Array.from(socket.rooms.values()).filter(
             (r) => r !== socket.id
           );
 
-        console.log("🚀 ~ file: room.ts:27 ~ RoomController ~ joinRoom ~ socketRoomsFilter", socketRoomsFilter.length)
-
         // if the room doesn't exist, create it
-        console.log("hehe 1")
          if(socketRoomsFilter.length>0 || (room && room.size === 2)) {
-            console.log("hehe")
             socket.emit('room_join_error', {
                 error: 'Unfortunately this Room is full :('
             });
@@ -58,10 +42,8 @@ export class RoomController {
             }
 
               else if(room.size > 1) {
-                console.log("Inside jfklsdjfd",socket.id)
                 console.log("Inside",room.size)
                 socket.to(data.room).emit("start_game", { start: false, symbol: "o" });
-                console.log("Inside 3")
                 // send to the second  client
                 socket.emit("start_game", { start: true, symbol: "x" });
 

@@ -22,6 +22,4 @@ export class MainController {
     disconnect(@ConnectedSocket() socket: Socket) {
         console.log('client disconnected', socket.id);
     }
-
-  
 }

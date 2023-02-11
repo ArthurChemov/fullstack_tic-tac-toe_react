@@ -43,29 +43,15 @@ export class GameController {
         socket.to(gameRoom).emit("on_game_win", data);
     }
 
-   
+
     @OnMessage('rematch')
     public async rematch(@ConnectedSocket() socket: Socket, @MessageBody() data: any, @SocketIO() io: Server) {
-        
-
         // get the room
         const room = io.sockets.adapter.rooms.get(data.room);
        console.log("hello")
-
-
         // if the room doesn't exist, create it
-        
-            
-                socket.to(data.room).emit("onRematch", { start: false, symbol: "o" });
-                // send to the second  client
-                socket.emit("onRematch", { start: true, symbol: "x" });
-                
-          
-            
-        
-
+        socket.to(data.room).emit("onRematch", { start: false, symbol: "o" });
+        // send to the second  client
+        socket.emit("onRematch", { start: true, symbol: "x" });
     }
-
-
-
 }
