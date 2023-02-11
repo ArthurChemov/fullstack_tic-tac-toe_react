@@ -19,7 +19,7 @@ const App = () => {
 
   const connectSocket = async () => {
     const socket = await socketService
-      .connect("https://xos.onrender.com/")
+      .connect("http://localhost:9000/")
       .catch((err) => {
         console.log("Error: ", err);
       });
