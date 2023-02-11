@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react'
-import { Alert, Board } from '../components';
+import Alert from '../components/Alert';
+import Board from '../components/Board';
 import { Button, GameInfo, GameInfoText, } from '../custom-styles';
 import gameService from '../service/game';
 import socketService from '../service/socket';

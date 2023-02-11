@@ -1,15 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import {
-  Appcontainer,
-  Container,
-  GameDescription,
-  Header,
-  GameContainer,
-  JoinRoomButton,
-  JoinRoomForm,
-  JoinRoomInput,
-  LeaveRoomButton
-} from './custom-styles';
+import { Appcontainer, Container, GameDescription, Header, GameContainer, JoinRoomButton, JoinRoomForm, JoinRoomInput, LeaveRoomButton } from './custom-styles/index';
 import GameContext, { IGameContextProps } from "./gameContext";
 import GameContent from './content/game';
 import socketService from './service/socket';
@@ -34,8 +24,6 @@ const App = () => {
         console.log("Error: ", err);
       });
   };
-
-
 
   useEffect(() => {
     connectSocket();
@@ -97,8 +85,7 @@ const App = () => {
     setTimeout(
       () => {
         seterror(null);
-      }
-      , 5000
+      }, 5000
     )
 
   };
@@ -123,7 +110,6 @@ const leaveRoom = () => {
     <GameContext.Provider value={gameContextValue}>
       <Appcontainer>
         <Container>
-
           <Header>
             <GameDescription>
               {!isGameStarted ?
@@ -132,19 +118,14 @@ const leaveRoom = () => {
               }
             </GameDescription>
           </Header>
-
           <GameContainer >
             {(!isGameStarted) &&
-
               <JoinRoomForm onSubmit={joinRoom}>
-
                 {isJoining &&
                   <>
                     <span className="Joining-text">Joining </span>
-
                     <span className=" Joining-text Joining-points">...</span>
                   </>
-
                 }
                 {
                   (!isInRoom && !isJoining && !isWaiting) &&
@@ -159,17 +140,13 @@ const leaveRoom = () => {
                   (!isJoining && isWaiting) &&
                   <>
                     <span className="Joining-text">Waiting for opponent</span>
-
                     <span className=" Joining-text Joining-points">...</span>
                   </>
-
                 }
               </JoinRoomForm>
             }
-
             <GameContent />
           </GameContainer>
-
         </Container>
    {   isInRoom &&  <LeaveRoomButton
           onClick={leaveRoom}
@@ -179,8 +156,6 @@ const leaveRoom = () => {
         </LeaveRoomButton>}
       </Appcontainer >
     </GameContext.Provider>
-
-
   );
 }
 
