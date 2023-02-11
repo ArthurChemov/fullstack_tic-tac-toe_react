@@ -1,15 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import {
-  Appcontainer,
-  Container,
-  GameDescription,
-  Header,
-  GameContainer,
-  JoinRoomButton,
-  JoinRoomForm,
-  JoinRoomInput,
-  LeaveRoomButton
-} from './custom-styles';
+import { Appcontainer, Container, GameDescription, Header, GameContainer, JoinRoomButton, JoinRoomForm, JoinRoomInput, LeaveRoomButton } from './custom-styles/index';
 import GameContext, { IGameContextProps } from "./gameContext";
 import GameContent from './content/game';
 import socketService from './service/socket';
