@@ -306,7 +306,7 @@ const GameContent = () => {
         <>
             <GameInfo className={""}>
                 <GameInfoText>
-                    You:{state.x} {" | "} {"'em"}:{state.o}
+                    You:{state.x} {" | "} {"Your friend"}:{state.o}
                 </GameInfoText>
                 {(isInRoom && !isGameStarted && times > 0) && <Button onClick={() =>
                     rematch()
