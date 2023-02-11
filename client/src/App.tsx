@@ -113,7 +113,7 @@ const leaveRoom = () => {
           <Header>
             <GameDescription>
               {!isGameStarted ?
-                <span className={!error ? "blinking-text" : "error"}>{error ? error : "Invite your mate !"}</span>
+                <span className={!error ? "blinking-text" : "error"}>{error ? error : "Invite your friend !"}</span>
                 : <span className={"blinking-text"}>{isPlayerTurn ? "Your turn" : "Waiting your rival to draw"}</span>
               }
             </GameDescription>

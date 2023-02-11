@@ -268,7 +268,6 @@ const GameContent = () => {
 
     }
 
-
     const rematch = () => {
         setend(false);
         setclear(false);
@@ -277,9 +276,6 @@ const GameContent = () => {
         gameService.rematch(socketService.socket, { room: roomName });
 
     }
-
-
-
 
     const calculateWinner = (s: any) => {
         const lines = [
@@ -301,12 +297,11 @@ const GameContent = () => {
         return null;
     }
 
-
     return (
         <>
             <GameInfo className={""}>
                 <GameInfoText>
-                    You:{state.x} {" | "} {"'em"}:{state.o}
+                    You:{state.x} {" | "} {"Your friend"}:{state.o}
                 </GameInfoText>
                 {(isInRoom && !isGameStarted && times > 0) && <Button onClick={() =>
                     rematch()
@@ -333,8 +328,6 @@ const GameContent = () => {
                     close={closeAlert}
                 />
             }
-
-
         </>
     )
 }

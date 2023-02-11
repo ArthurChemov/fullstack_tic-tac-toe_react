@@ -28,7 +28,7 @@ const Alert = (
                     VS
                 </span>
                 <span className="big-letter">
-                    {"'em"}:
+                    {"Your friend"}:
                 </span>
                 <span className="span">
                     {state.o}
