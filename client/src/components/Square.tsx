@@ -1,5 +1,4 @@
-import { SquareContainer } from "../custom-styles";
-
+import { SquareContainer } from "../custom-styles/styles";
 
 const Square = (
     {
@@ -11,9 +10,7 @@ const Square = (
     }
 ) => {
     return (
-        <SquareContainer
-            onClick={onClick}
-        >
+        <SquareContainer onClick={onClick}>
             <span>{value}</span>
         </SquareContainer>
     );

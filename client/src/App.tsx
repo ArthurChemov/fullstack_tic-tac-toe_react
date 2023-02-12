@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Appcontainer, Container, GameDescription, Header, GameContainer, JoinRoomButton, JoinRoomForm, JoinRoomInput, LeaveRoomButton } from './custom-styles/index';
+import { Appcontainer, Container, GameDescription, Header, GameContainer, JoinRoomButton, JoinRoomForm, JoinRoomInput, LeaveRoomButton } from './custom-styles/styles';
 import GameContext, { IGameContextProps } from "./gameContext";
 import GameContent from './content/game';
 import socketService from './service/socket';
@@ -17,18 +17,6 @@ const App = () => {
   const [error, seterror] = useState(null);
   const [data, setdata] = useState(null);
 
-  const connectSocket = async () => {
-    const socket = await socketService
-      .connect("https://xos.onrender.com/")
-      .catch((err) => {
-        console.log("Error: ", err);
-      });
-  };
-
-  useEffect(() => {
-    connectSocket();
-  }, []);
-
   const gameContextValue: IGameContextProps = {
     isInRoom,
     setInRoom,
@@ -44,6 +32,18 @@ const App = () => {
     setdata,
     roomName
   };
+
+  const connectSocket = async () => {
+    await socketService
+      .connect("https://xos.onrender.com/")
+      .catch((err) => {
+        console.log("Error: ", err);
+      });
+  };
+
+  useEffect(() => {
+    connectSocket();
+  }, []);
 
   const handleRoomNameChange = (e: React.ChangeEvent<any>) => {
     const value = e.target.value;
@@ -65,11 +65,10 @@ const App = () => {
       });
 
     console.log(joined)
-
     if (joined) {
       setInRoom(true);
       setWaiting(true);
-      const res = await gameService.onGameStarted(socketService.socket, (data) => {
+      await gameService.onGameStarted(socketService.socket, (data) => {
         console.log("inside 3")
         console.log(data)
         if (data) {
@@ -79,11 +78,8 @@ const App = () => {
         }
       });
     }
-
     setJoining(false);
-
-    setTimeout(
-      () => {
+    setTimeout( () => {
         seterror(null);
       }, 5000
     )
@@ -101,7 +97,6 @@ const leaveRoom = () => {
     setInRoom(false);
     setWaiting(false);
     setdata(null);
-
     alert("You have left the room !");
   };
 

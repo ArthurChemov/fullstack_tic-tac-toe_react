@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react'
+import { Button, GameInfo, GameInfoText, } from '../custom-styles/styles';
 import Alert from '../components/Alert';
 import Board from '../components/Board';
-import { Button, GameInfo, GameInfoText, } from '../custom-styles';
 import gameService from '../service/game';
 import socketService from '../service/socket';
 import gameContext from '../gameContext';
@@ -239,8 +239,6 @@ const GameContent = () => {
                     }
                 }
             )
-
-
         }
 
         else if (
@@ -264,8 +262,6 @@ const GameContent = () => {
 
         gameService.move(socketService.socket, squares);
         setPlayerTurn(false);
-
-
     }
 
     const rematch = () => {
@@ -303,17 +299,15 @@ const GameContent = () => {
                 <GameInfoText>
                     You:{state.x} {" | "} {"Your friend"}:{state.o}
                 </GameInfoText>
-                {(isInRoom && !isGameStarted && times > 0) && <Button onClick={() =>
-                    rematch()
-                }>
+                    {(isInRoom && !isGameStarted && times > 0) && <Button onClick={() =>
+                        rematch()
+                    }>
                     Rematch
                 </Button>}
                 <GameInfoText>
                     Times : {times}
                 </GameInfoText>
             </GameInfo>
-
-
             <Board
                 squares={gameState.history[gameState.stepNumber].squares}
                 onClick={(i) => handleClick(i)}

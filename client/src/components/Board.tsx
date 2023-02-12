@@ -1,6 +1,5 @@
-
 import Square from './Square';
-import { BoardContainer, } from '../custom-styles';
+import { BoardContainer, } from '../custom-styles/styles';
 
 const Board = (
     {
@@ -18,9 +17,7 @@ const Board = (
     const renderSquare = (i: number) => {
         return (
             <Square
-                value={
-                    !reset ? squares[i] : ""
-                }
+                value={ !reset ? squares[i] : "" }
                 onClick={() => onClick(i)}
             />
         );

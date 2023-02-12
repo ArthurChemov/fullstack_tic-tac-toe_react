@@ -1,4 +1,4 @@
-import { AlertContainer, AlertTitle, DisplayScore , Button} from "../custom-styles";
+import { AlertContainer, AlertTitle, DisplayScore , Button} from "../custom-styles/styles";
 
 const Alert = (
     {
@@ -34,9 +34,7 @@ const Alert = (
                     {state.o}
                 </span>
             </DisplayScore>
-            <Button
-                onClick={close}
-            >
+            <Button onClick={close}>
                 Close
             </Button>
         </AlertContainer>
