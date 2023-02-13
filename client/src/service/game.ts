@@ -5,7 +5,7 @@ class GameService {
     public async joinGameRoom(socket: Socket, room: string): Promise<boolean> {
         return new Promise((rs, rj) => {
           socket.emit("join", { room });
-        console.log("joined: ", room);
+          console.log("joined: ", room);
           socket.on("joined", () => rs(true));
           socket.on("room_join_error", ({ error }) => rj(error));
         });
