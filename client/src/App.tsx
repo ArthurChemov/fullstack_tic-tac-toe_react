@@ -35,7 +35,7 @@ const App = () => {
 
   const connectSocket = async () => {
     await socketService
-      .connect("http://localhost:9000/")
+      .connect("https://tic-tac-toe-node-bglk9glzl-arthurchemov.vercel.app/")
       .catch((err) => {
         console.log("Error: ", err);
       });
