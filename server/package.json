@@ -2,8 +2,11 @@
   "name": "server",
   "version": "0.1.0",
   "private": true,
+  "engines": {
+    "node": "18.x"
+  },
   "scripts": {
-    "start": "nodemon"
+    "start": "node"
   },
   "dependencies": {
     "cookie-parser": "~1.4.4",
